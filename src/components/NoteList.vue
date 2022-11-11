@@ -1,9 +1,10 @@
 <template>
   <div class="noteList">
-    <div v-for="note in noteStore.notes " class="note" :key="note.id">
-      <h2>笔记标题{{ note.title }}</h2>
+    <!-- <div v-for="note in noteStore.notes " class="note" :key="note.id"> -->
+    <div v-for="note in noteStore.searchedNotes " class="note" :key="note.id">
+      <h2>{{ note.title }}</h2>
       <article>
-        <p>这是笔记内容 {{ note.content }}</p>
+        <p>{{ note.content }}</p>
       </article>
     </div>
   </div>
