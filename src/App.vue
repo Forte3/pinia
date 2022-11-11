@@ -9,12 +9,11 @@ const userStore = useUserStore();
 
 <template>
   <main>
-    <p>名称:{{ userStore.user.name }}</p>
     <h1>我的笔记本</h1>
     <SearchNote />
     <NoteList />
     <AddNote />
-
+    <p>当前登录用户:{{ userStore.user.name }}</p>
   </main>
 </template>
 
