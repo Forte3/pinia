@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useUserStore } from "./user";
 
 export const useNoteStore = defineStore("notes", () => {
   const notes = ref([
@@ -41,12 +42,16 @@ export const useNoteStore = defineStore("notes", () => {
     }
   });
 
+  const userStore = useUserStore();
+
   function addNotes(title, content) {
-    notes.value.push({
-      id: notes.value.length + 1,
-      title,
-      content
-    });
+    if (userStore.isLoginIn()) {
+      notes.value.push({
+        id: notes.value.length + 1,
+        title,
+        content
+      });
+    }
 
     searchTerm.value = '';
   }

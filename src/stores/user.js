@@ -7,7 +7,12 @@ export const useUserStore = defineStore("user", () => {
     age: 18,
   });
 
+  function isLoginIn() {
+    return user.value !== null;
+  }
+
   return {
     user,
+    isLoginIn,
   }
 })
