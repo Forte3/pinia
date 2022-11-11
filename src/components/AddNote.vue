@@ -19,12 +19,25 @@ const note = reactive({
 
 const noteStore = useNoteStore();
 
+// const addNote = () => {
+//   noteStore.notes.push({
+//     id: noteStore.notes.length + 1,
+//     title: note.title,
+//     content: note.content
+//   })
 const addNote = () => {
-  noteStore.notes.push({
-    id: noteStore.notes.length + 1,
-    title: note.title,
-    content: note.content
-  })
+  // $patch 同时修改多个状态
+  noteStore.$patch({
+    notes: [
+      ...noteStore.notes,
+      {
+        id: noteStore.notes.length + 1,
+        title: note.title,
+        content: note.content
+      }
+    ],
+    searchTerm: ''
+  });
 
   note.title = '';
   note.content = '';
