@@ -41,9 +41,20 @@ export const useNoteStore = defineStore("notes", () => {
     }
   });
 
+  function addNotes(title, content) {
+    notes.value.push({
+      id: notes.value.length + 1,
+      title,
+      content
+    });
+
+    searchTerm.value = '';
+  }
+
   return {
     notes,
     searchTerm,
     searchedNotes,
+    addNotes,
   };
 });

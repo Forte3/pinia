@@ -25,19 +25,23 @@ const noteStore = useNoteStore();
 //     title: note.title,
 //     content: note.content
 //   })
-const addNote = () => {
-  // $patch 同时修改多个状态
-  noteStore.$patch({
-    notes: [
-      ...noteStore.notes,
-      {
-        id: noteStore.notes.length + 1,
-        title: note.title,
-        content: note.content
-      }
-    ],
-    searchTerm: ''
-  });
+
+// const addNote = () => {
+// $patch 同时修改多个状态
+// noteStore.$patch({
+//   notes: [
+//     ...noteStore.notes,
+//     {
+//       id: noteStore.notes.length + 1,
+//       title: note.title,
+//       content: note.content
+//     }
+//   ],
+//   searchTerm: ''
+// });
+
+function addNote() {
+  noteStore.addNotes(note.title, note.content);
 
   note.title = '';
   note.content = '';
