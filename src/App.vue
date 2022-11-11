@@ -2,14 +2,19 @@
 import SearchNote from "./components/SearchNote.vue";
 import NoteList from "./components/NoteList.vue";
 import AddNote from "./components/AddNote.vue";
+import { useUserStore } from './stores/user';
+
+const userStore = useUserStore();
 </script>
 
 <template>
   <main>
+    <p>名称:{{ userStore.user.name }}</p>
     <h1>我的笔记本</h1>
     <SearchNote />
     <NoteList />
     <AddNote />
+
   </main>
 </template>
 
